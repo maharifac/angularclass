@@ -1,0 +1,53 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+
+ 
+  <h1>Angular6 Template-Driven Form Validation</h1>
+
+  <div class="container">
+  <form method="POST" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" 
+          #firstName="ngModel"
+           [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid,'is-valid':firstName.valid }" 
+           required  minlength="6"/>
+          <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+              <div *ngIf="firstName.errors.required">First Name is required</div>
+              <div *ngIf="firstName.errors.minlength">min 6 required</div>
+            </div>
+            <div *ngIf="f.submitted && firstName.valid" class="valid-feedback">
+              
+            </div>
+      
+
+      <label class="form-group">Lastname</label>
+      <input type="text" class="form-control" name="lastname"  [(ngModel)]="model.lastname" 
+      #lastname="ngModel" [ngClass]="{ 'is-invalid':f.submitted && lastname.invalid }" required/>
+      <div *ngIf="f.submitted && lastname.invalid" class="invalid-feedback">
+        <div *ngIf="lastname.errors.required">last name required</div>
+      </div>
+
+      <label class="form-group">email</label>
+      <input type="email" class="form-control"  name="mail"  [(ngModel)]="model.email"
+      #email="ngModel" [ngClass]="{ 'is-invalid':f.submitted && email.invalid }" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+      <div *ngIf="f.submitted && email.invalid" class="invalid-feddback">
+        <div *ngIf="email.errors.required">email required</div>
+        <div *ngIf="email.errors.patter">please enter a valid email</div>
+        
+      </div>
+
+      <label class="form-group">password</label>
+      <input type="password" class="form-control" name="password"  [(ngModel)]="model.password"
+      #password="ngModel" [ngClass]="{ 'is-invalid':f.submitted && password.invalid }" required/>
+      <div *ngIf="f.submitted && password.invalid" class="invalid-feddback">
+        <div *ngIf="password.errors.required">password required</div>
+      </div> >
+
+    
+      <button type="submit" id="sub">submit</button>
+    </div>    
+    </form>
+
+  </div>
+</div>

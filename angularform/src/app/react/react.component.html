@@ -1,0 +1,48 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+  
+   
+    <h1>Angular6 react model Validation</h1>
+   <div class="container">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+        <label>First Name</label>
+            <input type="text" class="form-control" formControlName="firstName" 
+             [ngClass]="{ 'is-invalid': submitted && f.firstName.errors}">
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <div *ngIf="f.firstName.errors.required">First name is required</div>
+            </div>
+               
+        
+  
+            <label>last Name</label>
+            <input type="text" class="form-control" formControlName="lastName" 
+             [ngClass]="{ 'is-invalid': submitted && f.lastName.errors}">
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+              <div *ngIf="f.lastName.errors.required">last name is required</div>
+            </div>
+
+            <label>email</label>
+            <input type="text" class="form-control" formControlName="email" 
+             [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">email is required</div>
+            </div>
+               
+
+            <label>password</label>
+            <input type="text" class="form-control" formControlName="password" 
+             [ngClass]="{ 'is-invalid': submitted && f.password.errors}">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">password is required</div>
+            </div>
+               
+              <div>
+            <button type="submit" id="sub">submit</button>
+            </div>   
+    </div> 
+      </form>
+  
+    </div>
+  </div>
